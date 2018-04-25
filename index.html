@@ -1,0 +1,64 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>数字抽出</title>
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="css/tooltip_custom.css">
+  <link rel="shortcut icon" href="img/favicon.ico">
+  <script src="js/vue.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.6.0/clipboard.min.js"></script>
+</head>
+<body class="container">
+    <h1>数字抽出</h1>
+    <p>文字列の中から数字のみ抽出します</p>
+  <div id="FilterNumberConverter">
+    <div class="row, well">
+      <p>文字列</p>
+
+    <div class="well">
+      <INPUT type="text" name="ファイルパスinput" v-model="stringInput" style="width:100%">
+    </div>
+    <p>出力結果</p>
+    <div class="well alert-success clipArea tooltip_custom" data-clipboard-target="#onlyNumberString">
+        <div id=onlyNumberString>{{resultString}}</div>
+        <span class="tooltiptext_custom">クリックするとコピーされます</span>
+    </div>
+
+  </div>
+<footer>
+  <h6>Copyright &copy; 2015 growsic</h6>
+</footer>
+
+</body>
+<script type="text/javascript">
+  var clipboard = new Clipboard('.clipArea');
+  clipboard.on('success', function(e) {
+    console.info('Action:', e.action);
+    console.info('Text:', e.text);
+    console.info('Trigger:', e.trigger);
+    e.clearSelection();
+  });
+
+
+
+  var counter = new Vue({
+
+    el: '#FilterNumberConverter',
+
+    data: {
+      stringInput: "",
+    },
+
+    computed: {
+            resultString: function () {
+                if(this.stringInput != "") {
+                  return this.stringInput.replace(/[^0-9]/g, "");
+                }
+            }
+    }
+  })
+</script>
+</html>
