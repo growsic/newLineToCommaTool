@@ -4,7 +4,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>数字抽出</title>
+  <title>半角英数字抽出</title>
   <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="css/tooltip_custom.css">
   <link rel="shortcut icon" href="img/favicon.ico">
@@ -13,7 +13,7 @@
 </head>
 <body class="container">
     <h1>数字抽出</h1>
-    <p>文字列の中から数字のみ抽出します</p>
+    <p>文字列の中から半角英数字のみ抽出します</p>
   <div id="FilterNumberConverter">
     <div class="row, well">
       <p>文字列</p>
@@ -55,7 +55,7 @@
     computed: {
             resultString: function () {
                 if(this.stringInput != "") {
-                  return this.stringInput.replace(/[^0-9]/g, "");
+                  return this.stringInput.replace(/[^0-9a-zA-Z]/g, "");
                 }
             }
     }
