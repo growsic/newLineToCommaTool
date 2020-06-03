@@ -20,6 +20,10 @@
     transition: opacity 1s;
 }
 
+.word_turn_back {
+    word-wrap: break-word;
+}
+
 .tooltip_custom .tooltiptext_custom::after {
     content: "";
     position: absolute;

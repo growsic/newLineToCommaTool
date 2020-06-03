@@ -12,17 +12,17 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.6.0/clipboard.min.js"></script>
 </head>
 <body class="container">
-    <h1>半角英数字抽出</h1>
-    <p>文字列の中から半角英数字のみ抽出します</p>
+    <h1>改行カンマ変換</h1>
+    <p>改行をカンマに変換します</p>
   <div id="FilterNumberConverter">
     <div class="row, well">
       <p>文字列</p>
 
     <div class="well">
-      <INPUT type="text" name="ファイルパスinput" v-model="stringInput" style="width:100%">
+      <textarea type="textarea" name="ファイルパスinput" v-model="stringInput" style="width:100%"></textarea>
     </div>
-    <p>出力結果</p>
-    <div class="well alert-success clipArea tooltip_custom" data-clipboard-target="#onlyNumberString">
+    <p>出力結果(緑のエリアをクリックするとコピーされます)</p>
+    <div class="well alert-success clipArea tooltip_custom word_turn_back" data-clipboard-target="#onlyNumberString">
         <div id=onlyNumberString>{{resultString}}</div>
         <span class="tooltiptext_custom">クリックするとコピーされます</span>
     </div>
@@ -55,7 +55,7 @@
     computed: {
             resultString: function () {
                 if(this.stringInput != "") {
-                  return this.stringInput.replace(/[^0-9a-zA-Z]/g, "");
+                  return this.stringInput.replace(/\n/g, ",");
                 }
             }
     }
